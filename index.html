@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hearing Hands: Generating Sounds from Physical Interactions in 3D Scenes</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <!-- <link rel="icon" href="./static/images/favicon.svg"> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu">
+      <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+        <a class="navbar-item" href="https://www.yimingdou.com/">
+          <span class="icon">
+            <i class="fas fa-home"></i>
+          </span>
+        </a>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            More Research
+          </a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://www.yimingdou.com/TaRF/">
+              TaRF
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- JavaScript to toggle mute/unmute on click -->
+  <script>
+    function toggleMute(clickedVideo) {
+      clickedVideo.muted = !clickedVideo.muted;
+    }
+  </script>
+
+  <!-- Inline JavaScript to control the carousel -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var options = {
+        slidesToScroll: 1,
+        slidesToShow: 2,
+        loop: true,
+        infinite: true,
+        autoplay: false,
+        autoplaySpeed: 5000,
+        centerMode: true,
+        pagination: false,
+      };
+
+      var carousels = bulmaCarousel.attach('#results-carousel', options);
+    });
+  </script>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Hearing Hands: Generating Sounds from Physical Interactions in 3D
+              Scenes</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://www.yimingdou.com/">Yiming Dou</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://prbs5kong.github.io/">Wonseok Oh</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://www.linkedin.com/in/yuqing-luo-452715249/">Yuqing Luo</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://antonilo.github.io/">Antonio Loquercio</a><sup>2</sup>,</span>
+              <span class="author-block">
+                <a href="https://andrewowens.com/">Andrew Owens</a><sup>1</sup></span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>University of Michigan</span>
+              <span class="author-block"><sup>2</sup>University of Pennsylvania</span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">CVPR 2025</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="https://openaccess.thecvf.com/content/CVPR2025/papers/Dou_Hearing_Hands_Generating_Sounds_from_Physical_Interactions_in_3D_Scenes_CVPR_2025_paper.pdf"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <!-- <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span> -->
+                    <span>Paper</span>
+                  </a>
+                </span>
+
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2506.09989"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <!-- <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span> -->
+                    <span>arXiv</span>
+                  </a>
+                </span>
+
+                <span class="link-block">
+                  <a href="https://github.com/Dou-Yiming/hearing_hands"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <!-- <span class="icon">
+                      <i class="svg-inline--fa fa-github fa-w-16"></i>
+                    </span> -->
+                    <span>Code</span>
+                  </a>
+                </span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero teaser">
+
+  </section>
+
+
+  <section class="section" style="margin-top: -80px;">
+    <!-- <div class="hero-body"> -->
+    <div class="columns is-centered">
+      <div class="custom-video-container-extra-wide">
+        <video id="teaser" autoplay loop muted playsinline onclick="toggleMute(this)">
+          <source src="./static/videos/hearing_hands.mp4" type="video/mp4">
+        </video>
+        <center>
+          <p style="font-size: 12pt;">
+            Click on the video to <strong>unmute or mute</strong>! (Audio begins around 0:15)
+          </p>
+        </center>
+      </div>
+    </div>
+    <!-- </div> -->
+  </section>
+
+
+  <section class="section" style="margin-top: -60px;>
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              We study the problem of making 3D scene reconstructions interactive by asking the following question: can
+              we predict the sounds of human hands physically interacting with a scene?
+            </p>
+            <p>
+              First, we record a video of a human manipulating objects within a 3D scene using their hands.
+              We then use these action-sound pairs to train a rectified flow model to map 3D hand trajectories to their
+              corresponding audio.
+              At test time, a user can query the model for other actions, parameterized as sequences of hand poses, to
+              estimate their corresponding sounds.
+              In our experiments, we find that our generated sounds accurately convey material properties and actions,
+              and that they are often indistinguishable to human observers from real sounds.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Foley generation with text control-->
+  <section class="section" style="margin-top: -60px;">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3 has-text-centered" id="text-refoley">Interactive Demo</h2>
+          <div class="content has-text-justified">
+            <p>
+              <strong>Select the action using the buttons on the right</strong> of the video to hear the
+              corresponding generated audio for that action. (Click the button to play the video, and click it again to
+              pause.)
+            </p>
+
+            <div class="custom-container" id="diningroom">
+              <div class="custom-columns">
+                <div class="custom-video-container">
+                  <video id="diningroom-video-player" unmute playsinline class="custom-video">
+                    <source id="video-source" src="./static/videos/interactive_demo/knock_diningroom.mp4#t=0.0001"
+                      type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+
+                <div class="custom-button-container">
+                  <div class="custom-button-area">
+                    <button class="button is-link is-small"
+                      onclick="changeVideo('./static/videos/interactive_demo/knock_diningroom.mp4', this, 'diningroom-video-player')">
+                      knock
+                    </button>
+                    <button class="button is-info is-small"
+                      onclick="changeVideo('./static/videos/interactive_demo/tap_diningroom.mp4', this, 'diningroom-video-player')">
+                      tap
+                    </button>
+                    <button class="button is-primary is-small"
+                      onclick="changeVideo('./static/videos/interactive_demo/scratch_diningroom.mp4', this, 'diningroom-video-player')">
+                      scratch
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="custom-container" id="lounge2">
+              <div class="custom-columns">
+                <div class="custom-video-container">
+                  <video id="lounge2-video-player" unmute playsinline class="custom-video">
+                    <source id="video-source" src="./static/videos/interactive_demo/knock_lounge2.mp4#t=0.0001"
+                      type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+
+                <div class="custom-button-container">
+                  <div class="custom-button-area">
+                    <button class="button is-link is-small"
+                      onclick="changeVideo('./static/videos/interactive_demo/knock_lounge2.mp4', this, 'lounge2-video-player')">
+                      knock
+                    </button>
+                    <button class="button is-info is-small"
+                      onclick="changeVideo('./static/videos/interactive_demo/tap_lounge2.mp4', this, 'lounge2-video-player')">
+                      tap
+                    </button>
+                    <button class="button is-primary is-small"
+                      onclick="changeVideo('./static/videos/interactive_demo/scratch_lounge2.mp4', this, 'lounge2-video-player')">
+                      scratch
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="custom-container" id="pine3">
+              <div class="custom-columns">
+                <div class="custom-video-container">
+                  <video id="pine3-video-player" unmute playsinline class="custom-video">
+                    <source id="video-source" src="./static/videos/interactive_demo/knock_pine3.mp4#t=0.0001"
+                      type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+
+                <div class="custom-button-container">
+                  <div class="custom-button-area">
+                    <button class="button is-link is-small"
+                      onclick="changeVideo('./static/videos/interactive_demo/knock_pine3.mp4', this, 'pine3-video-player')">
+                      knock
+                    </button>
+                    <button class="button is-info is-small"
+                      onclick="changeVideo('./static/videos/interactive_demo/tap_pine3.mp4', this, 'pine3-video-player')">
+                      tap
+                    </button>
+                    <button class="button is-primary is-small"
+                      onclick="changeVideo('./static/videos/interactive_demo/scratch_pine3.mp4', this, 'pine3-video-player')">
+                      scratch
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="margin-top: -60px;">
+    <h2 class="title is-3 has-text-centered" id="">Capturing Interaction Videos</h2>
+
+    <h4 class="title is-4 has-text-centered" id="">Data Collection Pipeline</h4>
+    <div class="columns is-centered">
+      <div class="custom-video-container-wide">
+        <div class="content has-text-justified">
+          <p>
+            The human collector interacts with the scene by performing various actions with their hands.
+            We lift the annotator's hands to the same 3D space of the scene reconstruction, 
+            and render a video of the interaction by projecting 3D hands on multiple viewpoints of the scene.
+            <!-- All rendered videos are synchronized with the sounds made by the hand actions. -->
+          </p>
+          <video id="teaser" autoplay muted loop playsinline class="custom-video">
+            <source id="video-source" src="./static/videos/data_capturing_fuse.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+      </div>
+    </div>
+
+    <h4 class="title is-4 has-text-centered" id="">A Dataset of Interaction-Sound Pairs</h4>
+    <div class="columns is-centered">
+      <div class="custom-video-container-wide">
+        <div class="content has-text-justified">
+          <p>
+            Our dataset is collected in 24 scenes, including offices, outdoor trees, bedrooms, etc., 
+            and covers a wide range of actions (hitting, scratching, patting, etc.) and interacted
+            materials (wood, metal, plastic, etc.).
+            <!-- In each scene, approximately 1,400 seconds of videos are -->
+            <!-- collected, resulting in a total of 9.1 hours of interaction data. -->
+          </p>
+
+          <img src="static/images/dataset_examples.jpg" width="600px" style="margin-bottom: 10px;"></img>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="margin-top: -60px;">
+    <h2 class="title is-3 has-text-centered" id="">Generating Action-Conditioned Sound</h2>
+    <!-- <h4 class="title is-4 has-text-centered" id="">Method Overview</h4> -->
+    <div class="columns is-centered">
+      <div class="custom-video-container-wide">
+        <div class="content has-text-justified">
+          <p>
+            We train a rectified flow model to generate a sound spectrogram from a sequence of 3D hand positions
+            and video frames generated from a 3D reconstruction of a scene.
+            The sound can subsequently be converted into a waveform using a vocoder.
+          </p>
+          <center>
+            <img src="static/images/method.jpg" width="300px" style="margin-bottom: 10px;"></img>
+          </center>
+          <!-- <img src="static/images/dataset_examples.jpg" width="600px" style="margin-bottom: 10px;"></img> -->
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- <section class="section" style="margin-top: -30px;">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3 has-text-centered" id="">Related Works</h2>
+          <p>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+
+  <script>
+    function changeVideo(videoSrc, buttonElement, videoElementId) {
+      // Mute all videos
+      const allVideos = document.querySelectorAll('video');
+      allVideos.forEach(video => {
+        video.muted = true; // Mute all videos
+      });
+
+      // Pause all other videos except the current one
+      const currentVideo = document.getElementById(videoElementId);
+      const allCustVideos = document.querySelectorAll('.custom-video');
+      allCustVideos.forEach(video => {
+        if (video !== currentVideo) {
+          video.pause(); // Pause all other videos
+        }
+      });
+
+      // Check if the button is already selected
+      const isButtonSelected = buttonElement.classList.contains('selected');
+
+      if (isButtonSelected) {
+        // If the button is selected, toggle play/pause for the video
+        if (currentVideo.paused) {
+          currentVideo.play();
+          currentVideo.muted = false;
+        } else {
+          currentVideo.pause();
+        }
+      } else {
+        // Remove 'selected' class from all buttons
+        const buttons = document.querySelectorAll('.custom-button-area .button');
+        buttons.forEach(button => button.classList.remove('selected'));
+
+        // Add 'selected' class to the clicked button
+        buttonElement.classList.add('selected');
+
+        // Update video source if needed
+        if (currentVideo.src !== videoSrc) {
+          currentVideo.src = videoSrc;
+          currentVideo.load(); // Ensure the new source is loaded
+        }
+
+        // Unmute and play the selected video
+        currentVideo.muted = false;
+        currentVideo.play();
+      }
+    }
+
+
+  </script>
+
+  <script>
+    function setupVideos() {
+      for (const video of document.querySelectorAll('.custom-video-2')) {
+        video.controls = false
+        video.addEventListener('mouseover', () => { video.controls = 'controls' })
+        video.addEventListener('mouseout', () => { video.controls = false })
+      }
+    }
+    window.addEventListener('load', setupVideos, false)
+  </script>
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@inproceedings{dou2025hearing,
+        title={Hearing Hands: Generating Sounds from Physical Interactions in 3D Scenes},
+        author={Dou, Yiming and Oh, Wonseok and Luo, Yuqing and Loquercio, Antonio and Owens, Andrew},
+        booktitle={Proceedings of the Computer Vision and Pattern Recognition Conference},
+        pages={1795--1804},
+        year={2025}
+      }
+      </code></pre>
+    </div>
+  </section>
+
+  <section class="section" hidden>
+    <div class="container is-max-desktop content">
+      <script type="text/javascript" id="clustrmaps"
+      src="//clustrmaps.com/map_v2.js?d=TzD2Tloeb2U5vfN2GzzamudAUYJl442T0uk4Jx8x2v8&cl=ffffff&w=a"></script>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              Template credits to <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> and <a
+                href="https://ificl.github.io/MultiFoley/">MultiFoley</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
