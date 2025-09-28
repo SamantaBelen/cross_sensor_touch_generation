@@ -107,31 +107,33 @@
             <h1 class="title is-1 publication-title">Cross-Sensor Touch Generation</h1>
             <div class="is-size-5 publication-authors">
               <span class="author-block">
-                <a href="https://www.yimingdou.com/">Samanta Rodriguez</a><sup>*</sup>,</span>
+                <a href="https://scholar.google.com/citations?user=40qJCVcAAAAJ&hl=en">Samanta Rodriguez</a><sup>*1</sup>,</span>
               <span class="author-block">
-                <a href="https://www.yimingdou.com/">Yiming Dou</a><sup>*</sup>,</span>
+                <a href="https://www.yimingdou.com/">Yiming Dou</a><sup>*1,2</sup>,</span>
               <span class="author-block">
-                <a href="https://prbs5kong.github.io/">Miquel Oller</a>,</span>
+                <a href="https://prbs5kong.github.io/">Miquel Oller</a><sup>1</sup>,</span>
                 <span class="author-block">
-                  <a href="https://andrewowens.com/">Andrew Owens</a>,</span>
+                  <a href="https://andrewowens.com/">Andrew Owens</a><sup>1,2</sup>,</span>
               <span class="author-block">
-                <a href="https://antonilo.github.io/">Nima Fazeli</a></span>
+                <a href="https://antonilo.github.io/">Nima Fazeli</a><sup>1</sup></span>
               
             </div>
 
             <div class="is-size-5 publication-authors">
-              <span class="author-block">University of Michigan</span>
+              <span class="author-block"><sup>1</sup>University of Michigan</span>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <span class="author-block"><sup>2</sup>Cornell University</span>
             </div>
 
             <div class="is-size-5 publication-authors">
-              <span class="author-block">CoRL 2025</span>
+              <span class="author-block">CoRL 2025 (<strong style="color: rgb(190, 11, 11);">Oral</strong>)</span>
             </div>
 
             <div class="column has-text-centered">
               <div class="publication-links">
                 <!-- PDF Link. -->
                 <span class="link-block">
-                  <a href="https://openaccess.thecvf.com/content/CVPR2025/papers/Dou_Hearing_Hands_Generating_Sounds_from_Physical_Interactions_in_3D_Scenes_CVPR_2025_paper.pdf"
+                  <a href="https://openreview.net/pdf?id=oGcC8nMOit"
                     class="external-link button is-normal is-rounded is-dark">
                     <!-- <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -139,27 +141,6 @@
                     <span>Paper</span>
                   </a>
                 </span>
-
-                <span class="link-block">
-                  <a href="https://arxiv.org/abs/2506.09989"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <!-- <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                    </span> -->
-                    <span>arXiv</span>
-                  </a>
-                </span>
-
-                <span class="link-block">
-                  <a href="https://github.com/Dou-Yiming/hearing_hands"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <!-- <span class="icon">
-                      <i class="svg-inline--fa fa-github fa-w-16"></i>
-                    </span> -->
-                    <span>Code</span>
-                  </a>
-                </span>
-              </div>
 
             </div>
           </div>
@@ -177,13 +158,10 @@
     <!-- <div class="hero-body"> -->
     <div class="columns is-centered">
       <div class="custom-video-container-extra-wide">
-        <video id="teaser" autoplay loop muted playsinline onclick="toggleMute(this)">
-          <source src="./static/videos/hearing_hands.mp4" type="video/mp4">
+        <video id="teaser" autoplay loop muted playsinline>
+          <source src="./static/videos/pencil_insertion.mp4" type="video/mp4">
         </video>
         <center>
-          <p style="font-size: 12pt;">
-            Click on the video to <strong>unmute or mute</strong>! (Audio begins around 0:15)
-          </p>
         </center>
       </div>
     </div>
@@ -198,17 +176,19 @@
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
             <p>
-              We study the problem of making 3D scene reconstructions interactive by asking the following question: can
-              we predict the sounds of human hands physically interacting with a scene?
-            </p>
-            <p>
-              First, we record a video of a human manipulating objects within a 3D scene using their hands.
-              We then use these action-sound pairs to train a rectified flow model to map 3D hand trajectories to their
-              corresponding audio.
-              At test time, a user can query the model for other actions, parameterized as sequences of hand poses, to
-              estimate their corresponding sounds.
-              In our experiments, we find that our generated sounds accurately convey material properties and actions,
-              and that they are often indistinguishable to human observers from real sounds.
+              Today's visuo-tactile sensors come in many shapes and sizes, making it challenging 
+              to develop general-purpose tactile representations. This is because most
+              models are tied to a specific sensor design. 
+              To address this challenge, we propose 
+              two approaches to cross-sensor image generation. The first is an end-to-end
+              method that leverages paired data (Touch2Touch). The second method builds
+              an intermediate depth representation and does not require paired data (T2D2:
+              Touch-to-Depth-to-Touch). 
+              Both methods enable the use of sensor-specific models across multiple sensors via the cross-sensor touch
+              generation process. Together, these models offer flexible solutions for sensor
+              translation, depending on data availability and application needs. We demonstrate 
+              their effectiveness on downstream tasks such as in-hand pose estimation
+              and behavior cloning, successfully transferring models trained on one sensor to another.
             </p>
           </div>
         </div>
@@ -216,185 +196,46 @@
     </div>
   </section>
 
-
-
-  <!-- Foley generation with text control-->
   <section class="section" style="margin-top: -60px;">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column is-four-fifths">
-          <h2 class="title is-3 has-text-centered" id="text-refoley">Interactive Demo</h2>
-          <div class="content has-text-justified">
-            <p>
-              <strong>Select the action using the buttons on the right</strong> of the video to hear the
-              corresponding generated audio for that action. (Click the button to play the video, and click it again to
-              pause.)
-            </p>
-
-            <div class="custom-container" id="diningroom">
-              <div class="custom-columns">
-                <div class="custom-video-container">
-                  <video id="diningroom-video-player" unmute playsinline class="custom-video">
-                    <source id="video-source" src="./static/videos/interactive_demo/knock_diningroom.mp4#t=0.0001"
-                      type="video/mp4">
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
-
-                <div class="custom-button-container">
-                  <div class="custom-button-area">
-                    <button class="button is-link is-small"
-                      onclick="changeVideo('./static/videos/interactive_demo/knock_diningroom.mp4', this, 'diningroom-video-player')">
-                      knock
-                    </button>
-                    <button class="button is-info is-small"
-                      onclick="changeVideo('./static/videos/interactive_demo/tap_diningroom.mp4', this, 'diningroom-video-player')">
-                      tap
-                    </button>
-                    <button class="button is-primary is-small"
-                      onclick="changeVideo('./static/videos/interactive_demo/scratch_diningroom.mp4', this, 'diningroom-video-player')">
-                      scratch
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="custom-container" id="lounge2">
-              <div class="custom-columns">
-                <div class="custom-video-container">
-                  <video id="lounge2-video-player" unmute playsinline class="custom-video">
-                    <source id="video-source" src="./static/videos/interactive_demo/knock_lounge2.mp4#t=0.0001"
-                      type="video/mp4">
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
-
-                <div class="custom-button-container">
-                  <div class="custom-button-area">
-                    <button class="button is-link is-small"
-                      onclick="changeVideo('./static/videos/interactive_demo/knock_lounge2.mp4', this, 'lounge2-video-player')">
-                      knock
-                    </button>
-                    <button class="button is-info is-small"
-                      onclick="changeVideo('./static/videos/interactive_demo/tap_lounge2.mp4', this, 'lounge2-video-player')">
-                      tap
-                    </button>
-                    <button class="button is-primary is-small"
-                      onclick="changeVideo('./static/videos/interactive_demo/scratch_lounge2.mp4', this, 'lounge2-video-player')">
-                      scratch
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="custom-container" id="pine3">
-              <div class="custom-columns">
-                <div class="custom-video-container">
-                  <video id="pine3-video-player" unmute playsinline class="custom-video">
-                    <source id="video-source" src="./static/videos/interactive_demo/knock_pine3.mp4#t=0.0001"
-                      type="video/mp4">
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
-
-                <div class="custom-button-container">
-                  <div class="custom-button-area">
-                    <button class="button is-link is-small"
-                      onclick="changeVideo('./static/videos/interactive_demo/knock_pine3.mp4', this, 'pine3-video-player')">
-                      knock
-                    </button>
-                    <button class="button is-info is-small"
-                      onclick="changeVideo('./static/videos/interactive_demo/tap_pine3.mp4', this, 'pine3-video-player')">
-                      tap
-                    </button>
-                    <button class="button is-primary is-small"
-                      onclick="changeVideo('./static/videos/interactive_demo/scratch_pine3.mp4', this, 'pine3-video-player')">
-                      scratch
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" style="margin-top: -60px;">
-    <h2 class="title is-3 has-text-centered" id="">Capturing Interaction Videos</h2>
-
-    <h4 class="title is-4 has-text-centered" id="">Data Collection Pipeline</h4>
+    <h4 class="title is-4 has-text-centered" id="">Translating signals between touch sensors</h4>
     <div class="columns is-centered">
       <div class="custom-video-container-wide">
         <div class="content has-text-justified">
           <p>
-            The human collector interacts with the scene by performing various actions with their hands.
-            We lift the annotator's hands to the same 3D space of the scene reconstruction, 
-            and render a video of the interaction by projecting 3D hands on multiple viewpoints of the scene.
-            <!-- All rendered videos are synchronized with the sounds made by the hand actions. -->
+            (a) We train a latent diffusion model to direct predict one sensor's signal from another's,
+            using paired training data. 
+            (b) We use depth as an intermediate representation, thus avoiding the need for paired
+            training data. We predict depth from touch, 
+            adapt the depth map to match the specifications of another sensor,
+            then generate a touch signal from the resulting depth map. 
+          </p>
+
+          <img src="static/images/method.png" width="600px" style="margin-bottom: 10px;"></img>
+
+        </div>
+      </div>
+    </div>
+
+    <h4 class="title is-4 has-text-centered" id="">Marble rolling policy transfer</h4>
+    <div class="columns is-centered">
+      <div class="custom-video-container-wide">
+        <div class="content has-text-justified">
+          <p>
+            We train behavior-cloning policy on GelSlim tactile
+            images to roll a marble from random starts to the image center. 
+            At test time on DIGIT, we translate each
+            DIGIT tactile signature to its GelSlim counterpart with T2D2 and run the same policy in a zero-shot manner.
           </p>
           <video id="teaser" autoplay muted loop playsinline class="custom-video">
-            <source id="video-source" src="./static/videos/data_capturing_fuse.mp4" type="video/mp4">
-            Your browser does not support the video tag.
+            <source id="video-source" src="./static/videos/marble_rolling.mp4" type="video/mp4">
           </video>
         </div>
 
       </div>
     </div>
 
-    <h4 class="title is-4 has-text-centered" id="">A Dataset of Interaction-Sound Pairs</h4>
-    <div class="columns is-centered">
-      <div class="custom-video-container-wide">
-        <div class="content has-text-justified">
-          <p>
-            Our dataset is collected in 24 scenes, including offices, outdoor trees, bedrooms, etc., 
-            and covers a wide range of actions (hitting, scratching, patting, etc.) and interacted
-            materials (wood, metal, plastic, etc.).
-            <!-- In each scene, approximately 1,400 seconds of videos are -->
-            <!-- collected, resulting in a total of 9.1 hours of interaction data. -->
-          </p>
-
-          <img src="static/images/dataset_examples.jpg" width="600px" style="margin-bottom: 10px;"></img>
-
-        </div>
-      </div>
-    </div>
+    
   </section>
-
-  <section class="section" style="margin-top: -60px;">
-    <h2 class="title is-3 has-text-centered" id="">Generating Action-Conditioned Sound</h2>
-    <!-- <h4 class="title is-4 has-text-centered" id="">Method Overview</h4> -->
-    <div class="columns is-centered">
-      <div class="custom-video-container-wide">
-        <div class="content has-text-justified">
-          <p>
-            We train a rectified flow model to generate a sound spectrogram from a sequence of 3D hand positions
-            and video frames generated from a 3D reconstruction of a scene.
-            The sound can subsequently be converted into a waveform using a vocoder.
-          </p>
-          <center>
-            <img src="static/images/method.jpg" width="300px" style="margin-bottom: 10px;"></img>
-          </center>
-          <!-- <img src="static/images/dataset_examples.jpg" width="600px" style="margin-bottom: 10px;"></img> -->
-
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- <section class="section" style="margin-top: -30px;">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column is-four-fifths">
-          <h2 class="title is-3 has-text-centered" id="">Related Works</h2>
-          <p>
-          </p>
-        </div>
-      </div>
-    </div>
-  </section> -->
 
 
   <script>
@@ -462,12 +303,10 @@
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
-      <pre><code>@inproceedings{dou2025hearing,
-        title={Hearing Hands: Generating Sounds from Physical Interactions in 3D Scenes},
-        author={Dou, Yiming and Oh, Wonseok and Luo, Yuqing and Loquercio, Antonio and Owens, Andrew},
-        booktitle={Proceedings of the Computer Vision and Pattern Recognition Conference},
-        pages={1795--1804},
-        year={2025}
+      <pre><code>@inproceedings{rodriguezcross,
+        title={Cross-Sensor Touch Generation},
+        author={Rodriguez, Samanta and Dou, Yiming and Oller, Miquel and Owens, Andrew and Fazeli, Nima},
+        booktitle={9th Annual Conference on Robot Learning}
       }
       </code></pre>
     </div>
